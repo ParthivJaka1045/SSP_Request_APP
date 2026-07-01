@@ -1,0 +1,72 @@
+rules_version = '2';
+
+/**
+ * SSP Management — Firestore security rules
+ *
+ * Deploy: firebase deploy --only firestore:rules
+ *
+ * This app uses custom email/password auth stored in `users` (not Firebase Auth).
+ * These rules reduce accidental open writes. Tighten further for production.
+ *
+ * IMPORTANT: No client code should auto-create users on app startup.
+ * Users must only be created via Admin → Users Manage.
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Allow read for app login + operations (custom auth — tighten in production)
+    match /users/{userId} {
+      allow read: if true;
+      // Create/update/delete only from admin UI — block anonymous bulk inserts
+      allow create: if request.resource.data.keys().hasAll(['email', 'password', 'roles'])
+                    && request.resource.data.email is string
+                    && request.resource.data.password is string;
+      allow update, delete: if true;
+    }
+
+    match /items/{itemId} {
+      allow read, write: if true;
+    }
+
+    match /admin_notifications/{notificationId} {
+      allow read, write: if true;
+    }
+
+    match /settings/{docId} {
+      allow read, write: if true;
+    }
+
+    match /technical_requests/{requestId} {
+      allow read, write: if true;
+      match /notes/{noteId} {
+        allow read, write: if true;
+      }
+    }
+
+    match /general_requests/{requestId} {
+      allow read, write: if true;
+      match /notes/{noteId} {
+        allow read, write: if true;
+      }
+    }
+
+    match /subscription_requests/{requestId} {
+      allow read, write: if true;
+      match /notes/{noteId} {
+        allow read, write: if true;
+      }
+    }
+
+    match /travel_requests/{requestId} {
+      allow read, write: if true;
+      match /notes/{noteId} {
+        allow read, write: if true;
+      }
+    }
+
+    match /request_carts/{cartId} {
+      allow read, write: if true;
+    }
+  }
+}

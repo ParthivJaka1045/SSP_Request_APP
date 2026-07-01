@@ -1,0 +1,459 @@
+/* ============================================================
+   SSP MANAGEMENT — Responsive Design (responsive.css)
+   Breakpoints, accessibility, touch, print
+   ============================================================ */
+
+/* ── TOUCH DEVICES ──────────────────────────────────────────── */
+@media (pointer: coarse) {
+  .btn,
+  .filter-chip,
+  .account-quick-link,
+  .mobile-nav-link,
+  .notif-bell-item,
+  .multi-select-option,
+  .role-switcher__pill {
+    min-height: 44px;
+  }
+
+  .form-control,
+  select.form-control {
+    min-height: 44px;
+    font-size: 16px; /* prevents iOS zoom */
+  }
+
+  .notif-bell-trigger,
+  .mobile-menu-btn,
+  .account-trigger {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+
+/* ── FOCUS STYLES ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+
+/* ── SAFE AREAS (NOTCHED PHONES) ────────────────────────────── */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .stk-header {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  .page-shell {
+    padding-left: max(1.75rem, env(safe-area-inset-left));
+    padding-right: max(1.75rem, env(safe-area-inset-right));
+  }
+  .bundle-bar {
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  }
+  .mobile-drawer-panel {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+
+/* ── TABLET LANDSCAPE & SMALL DESKTOP (≤1200px) ─────────────── */
+@media (max-width: 1200px) {
+  .masters-stk-grid {
+    grid-template-columns: 280px 1fr;
+  }
+  .user-manage-grid {
+    grid-template-columns: 340px 1fr;
+  }
+}
+
+
+/* ── TABLET LANDSCAPE (≤900px) ──────────────────────────────── */
+@media (max-width: 900px) {
+  .request-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .request-chat-container {
+    max-height: 50vh;
+  }
+  .request-product {
+    grid-template-columns: 1fr;
+  }
+  .request-product__gallery {
+    position: static;
+  }
+  .reports-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .masters-stk-grid {
+    grid-template-columns: 1fr;
+  }
+  .user-manage-grid {
+    grid-template-columns: 1fr;
+  }
+  .hub-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+/* ── TABLET PORTRAIT (≤767px) ───────────────────────────────── */
+@media (max-width: 767px) {
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .table-responsive {
+    border-radius: var(--radius-sm);
+  }
+  .stk-table,
+  .reports-table table {
+    min-width: 640px;
+  }
+  .orders-toolbar__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .orders-grid {
+    grid-template-columns: 1fr;
+  }
+  .user-manage-list__head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .reports-filter-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ── TABLET NAV (640px–1023px) ──────────────────────────────── */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .app-header-inner {
+    padding: 0.5rem 1rem;
+  }
+  .app-nav-link {
+    font-size: 0.78rem;
+    padding: 0.5rem 0.65rem;
+  }
+  .app-logo-text {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ── MOBILE (≤639px) ────────────────────────────────────────── */
+@media (max-width: 639px) {
+  /* Header */
+  .app-header-inner {
+    padding: 0.4rem 0.75rem;
+    gap: 0.45rem;
+  }
+  .app-logo-text {
+    font-size: 0.9rem;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .header-date {
+    display: none;
+  }
+
+  /* Notifications — fixed bottom sheet on mobile */
+  .notif-bell-panel {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 75vh;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    animation: slideUpSheet 0.3s ease;
+  }
+
+  /* Page shell */
+  .page-shell {
+    padding: 1rem 0.85rem 1.5rem;
+  }
+  .panel-padding {
+    padding: 1rem;
+  }
+
+  /* Page header */
+  .page-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .page-header-actions {
+    width: 100%;
+  }
+  .page-header-actions .btn {
+    flex: 1;
+  }
+  .page-title {
+    font-size: 1.25rem;
+  }
+
+  /* Buttons full-width */
+  .page-header-actions .btn,
+  .order-card__actions .btn {
+    flex: 1;
+  }
+
+  /* Reports */
+  .reports-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .reports-filters,
+  .reports-filters--stk {
+    grid-template-columns: 1fr;
+  }
+
+  /* Catalog */
+  .catalog-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .catalog-search {
+    min-width: 0;
+    width: 100%;
+  }
+  .filter-chip-group {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .filter-chip-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Item detail */
+  .item-detail {
+    grid-template-columns: 1fr;
+  }
+  .item-detail__actions {
+    flex-direction: column;
+  }
+  .item-detail__actions .btn {
+    width: 100%;
+  }
+
+  /* Orders */
+  .orders-toolbar__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .order-card__actions {
+    flex-direction: column;
+  }
+  .order-card__actions .btn {
+    width: 100%;
+  }
+
+  /* Hub */
+  .hub-hero {
+    flex-direction: column;
+    padding: 1.125rem;
+  }
+  .hub-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hub-quick-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Login */
+  .login-page__content {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  .login-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+  .login-card__header h2 {
+    font-size: 1.25rem;
+  }
+
+  /* Modal → bottom sheet */
+  .ssp-modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .ssp-modal {
+    max-width: 100%;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    max-height: 92dvh;
+    animation: slideUpSheet 0.3s ease;
+  }
+  .ssp-modal--fullpage {
+    border-radius: 0;
+    max-height: 100dvh;
+    height: 100%;
+  }
+  .ssp-modal__head {
+    padding: 1rem 1.125rem;
+  }
+  .ssp-modal__body {
+    padding: 1rem 1.125rem;
+  }
+  .ssp-modal__footer {
+    padding: 0.75rem 1.125rem;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0));
+  }
+
+  /* Product gallery */
+  .product-gallery {
+    flex-direction: column-reverse;
+  }
+  .product-gallery__thumbs {
+    flex-direction: row;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .product-gallery__thumbs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Tech entry */
+  .tech-entry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Masters */
+  .masters-stk-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ── SMALL PHONES (≤479px) ──────────────────────────────────── */
+@media (max-width: 479px) {
+  .reports-metrics {
+    grid-template-columns: 1fr;
+  }
+  .reports-metrics--dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dashboard-module-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-module-card__banner {
+    height: 100px;
+  }
+  .item-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .hub-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ── TINY PHONES (≤399px) ───────────────────────────────────── */
+@media (max-width: 399px) {
+  .page-shell {
+    padding: 0.75rem 0.65rem 1rem;
+  }
+  .panel-padding {
+    padding: 0.75rem;
+  }
+  .reports-metrics--dashboard {
+    grid-template-columns: 1fr;
+  }
+  .app-logo-text {
+    display: none;
+  }
+  .bundle-review-row {
+    grid-template-columns: 1fr;
+  }
+  .bundle-review-row__img {
+    width: 100%;
+    height: 160px;
+  }
+}
+
+
+/* ── REDUCED MOTION ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ── PRINT STYLES ───────────────────────────────────────────── */
+@media print {
+  .stk-header,
+  .stk-header-sub,
+  .mobile-drawer,
+  .notif-bell-wrap,
+  .notification-bell-container,
+  .bundle-bar,
+  .mobile-menu-btn,
+  .page-header-actions,
+  .order-card__actions,
+  .cart-pill {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+  }
+
+  .page-shell {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .stk-card,
+  .glass-panel,
+  .order-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+
+  .page-title {
+    font-size: 16pt;
+  }
+}
+
+
+/* ── SLIDE-UP SHEET ANIMATION ───────────────────────────────── */
+@keyframes slideUpSheet {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

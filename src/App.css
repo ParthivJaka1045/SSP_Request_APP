@@ -1,0 +1,166 @@
+/* ============================================================
+   SSP MANAGEMENT — App Utilities (App.css)
+   Page transitions, skeletons, empty states, spinners, utilities
+   ============================================================ */
+
+/* ── PAGE TRANSITION ────────────────────────────────────────── */
+.page-transition-root {
+  will-change: opacity, transform;
+}
+
+
+/* ── SKELETON LOADERS ───────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-muted) 25%,
+    var(--border) 37%,
+    var(--surface-muted) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-line {
+  height: 0.875rem;
+  margin-bottom: 0.625rem;
+  border-radius: var(--radius-xs);
+  background: linear-gradient(
+    90deg,
+    var(--surface-muted) 25%,
+    var(--border) 37%,
+    var(--surface-muted) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease infinite;
+}
+.skeleton-line:last-child {
+  width: 60%;
+}
+
+.skeleton-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    90deg,
+    var(--surface-muted) 25%,
+    var(--border) 37%,
+    var(--surface-muted) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease infinite;
+}
+
+.skeleton-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.skeleton-card .skeleton-line {
+  animation-delay: 0.15s;
+}
+
+
+/* ── EMPTY STATES ───────────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--ink-light);
+}
+
+.empty-state__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-light);
+  margin-bottom: 1rem;
+}
+
+.empty-state__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.empty-state__text {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+
+/* ── SPINNERS ───────────────────────────────────────────────── */
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: var(--radius-full);
+  animation: spin 0.65s linear infinite;
+  display: inline-block;
+}
+
+.spinner-sm {
+  width: 18px;
+  height: 18px;
+  border-width: 2px;
+}
+
+.spinner-lg {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+.catalog-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: var(--ink-light);
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+.catalog-loading::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: var(--radius-full);
+  animation: spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+
+/* ── UTILITY CLASSES ────────────────────────────────────────── */
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+
+.hover-scale {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-scale:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}

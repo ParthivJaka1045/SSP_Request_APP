@@ -1,0 +1,395 @@
+/* ──────────────────────────────────────────────────────────────────
+   ADVANCED ANIMATIONS - GSAP POWERED
+   ────────────────────────────────────────────────────────────────── */
+
+/* Text Character Animation */
+.text-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Scroll Animation Trigger */
+[data-scroll-animate] {
+  will-change: transform, opacity;
+}
+
+/* ── ENHANCED HOVER EFFECTS ─────────────────────────────────────── */
+
+/* Interactive card with advanced hover */
+.card-interactive {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.card-interactive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-interactive:hover::before {
+  left: 100%;
+}
+
+/* Glitch effect for errors/alerts */
+.glitch {
+  position: relative;
+  animation: glitch 0.3s ease;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Shake animation */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+/* ── MORPHING SHAPES ────────────────────────────────────────────── */
+
+@keyframes morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+.morph-bg {
+  animation: morph 8s ease-in-out infinite;
+  background: linear-gradient(-45deg, var(--primary-soft), var(--accent-soft));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.3;
+  filter: blur(40px);
+}
+
+/* ── LIQUID SWIPE EFFECT ────────────────────────────────────────── */
+
+@keyframes liquidSwipe {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.liquid-swipe {
+  animation: liquidSwipe 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* ── GRADIENT ANIMATION ────────────────────────────────────────── */
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animated {
+  background: linear-gradient(
+    -45deg,
+    var(--primary-soft),
+    var(--accent-soft),
+    var(--primary-soft)
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* ── NEON GLOW EFFECT ────────────────────────────────────────────── */
+
+@keyframes neonGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent),
+      0 0 20px var(--accent);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent),
+      0 0 40px var(--accent);
+  }
+}
+
+.neon-text {
+  animation: neonGlow 2s ease-in-out infinite;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── AURORA EFFECT ──────────────────────────────────────────────── */
+
+@keyframes aurora {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.aurora-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 20% 50%,
+    rgba(245, 158, 11, 0.15) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    ellipse at 80% 50%,
+    rgba(8, 145, 178, 0.15) 0%,
+    transparent 50%
+  );
+  animation: aurora 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── FLOATING ELEMENTS ──────────────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+.float-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ── MATRIX RAIN (LOADING STATE) ────────────────────────────────── */
+
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.matrix-char {
+  animation: matrixRain 3s ease-in infinite;
+  position: absolute;
+  color: var(--accent);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+/* ── PARTICLE BURST ────────────────────────────────────────────── */
+
+@keyframes burst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+
+.particle {
+  position: absolute;
+  pointer-events: none;
+  animation: burst 0.6s ease-out forwards;
+}
+
+/* ── SMOOTH TRANSITIONS ────────────────────────────────────────── */
+
+.smooth-transition {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface);
+  z-index: 9999;
+  animation: pageTransition 0.6s ease-in-out;
+}
+
+@keyframes pageTransition {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* ── BLOB ANIMATION ────────────────────────────────────────────── */
+
+@keyframes blobAnimation {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.blob {
+  position: absolute;
+  animation: blobAnimation 7s ease-in-out infinite;
+  filter: blur(40px);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+/* ── SPLIT TEXT ANIMATION ──────────────────────────────────────── */
+
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+
+.split-line span {
+  display: block;
+  will-change: transform;
+}
+
+/* ── SCROLL PROGRESS INDICATOR ─────────────────────────────────── */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  z-index: 1000;
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* ── MAGNETIC CURSOR ───────────────────────────────────────────── */
+
+.magnetic {
+  position: relative;
+  cursor: pointer;
+}
+
+.magnetic-child {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  will-change: transform;
+}
+
+/* ── ELASTIC HOVER ─────────────────────────────────────────────── */
+
+.elastic {
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.elastic:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+/* ── INFINITE SCROLL FADE ──────────────────────────────────────── */
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-in-up.visible {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── VISIBILITY OBSERVER ───────────────────────────────────────── */
+
+[data-visible] {
+  will-change: transform, opacity;
+}

@@ -96,12 +96,17 @@
   color: #fcd34d;
   border-radius: var(--radius-full);
   text-decoration: none;
-  transition: var(--transition-fast);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   white-space: nowrap;
 }
 .cart-pill:hover {
-  background: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.28);
   color: #fde68a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+}
+.cart-pill:active {
+  transform: translateY(-1px);
 }
 .cart-pill__label {
   font-weight: 500;
@@ -140,14 +145,18 @@
   background: rgba(255, 255, 255, 0.06);
   color: #fff;
   cursor: pointer;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
   font-family: inherit;
   font-size: 0.8125rem;
   font-weight: 500;
 }
 .account-trigger:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+.account-trigger:active {
+  transform: translateY(0);
 }
 
 .account-backdrop {
@@ -157,6 +166,7 @@
   background: transparent;
   border: none;
   cursor: default;
+  animation: fadeIn 0.15s ease;
 }
 
 .account-dropdown {
@@ -168,7 +178,7 @@
   padding: 1rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xl);
-  animation: fadeUp 0.2s ease;
+  animation: slideInRight 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   background: var(--surface);
   border: 1px solid var(--border);
 }
@@ -207,7 +217,7 @@
   color: var(--ink);
   border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
   cursor: pointer;
   border: none;
   background: none;
@@ -218,21 +228,35 @@
 .account-quick-link:hover {
   background: var(--surface-muted);
   color: var(--accent);
+  transform: translateX(2px);
+}
+.account-quick-link:active {
+  transform: translateX(0);
 }
 .account-quick-link svg {
   color: var(--ink-light);
   flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+.account-quick-link:hover svg {
+  color: var(--accent);
 }
 
 .account-logout {
   color: var(--danger);
+  transition: all 0.2s ease;
 }
 .account-logout:hover {
   background: var(--danger-soft);
   color: var(--danger);
+  transform: translateX(2px);
+}
+.account-logout:active {
+  transform: translateX(0);
 }
 .account-logout svg {
   color: var(--danger);
+  transition: color 0.2s ease;
 }
 
 
@@ -325,7 +349,7 @@
 }
 
 
-/* ── MOBILE MENU BUTTON ─────────────────────────────────────── */
+/* ── MOBILE MENU BUTTON ─────────���───────────────────────────── */
 .mobile-menu-btn {
   display: flex;
   align-items: center;

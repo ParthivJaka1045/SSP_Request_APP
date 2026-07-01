@@ -144,10 +144,14 @@ img {
 a {
   color: var(--accent);
   text-decoration: none;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
+  position: relative;
 }
 a:hover {
   color: var(--accent-dark);
+}
+a:active {
+  opacity: 0.85;
 }
 
 hr {
@@ -383,11 +387,19 @@ select.form-control {
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   padding-right: 2.25rem;
+  transition: all 0.2s ease;
+}
+select.form-control:hover {
+  border-color: rgba(8, 145, 178, 0.5);
 }
 
 textarea.form-control {
   resize: vertical;
   min-height: 5rem;
+  transition: all 0.2s ease;
+}
+textarea.form-control:hover:not(:focus) {
+  border-color: rgba(8, 145, 178, 0.4);
 }
 
 .form-grid-2 {
@@ -695,7 +707,7 @@ table.table {
 }
 
 
-/* ── ROLE BADGE ─────────────────────────────────────────────── */
+/* ── ROLE BADGE ──────────────────────────────��──────────────── */
 .role-badge {
   display: inline-flex;
   align-items: center;
@@ -943,11 +955,15 @@ table.table {
   font-weight: 500;
   cursor: pointer;
   padding: 0;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
 }
 .login-link-btn:hover {
   color: var(--primary-hover);
   text-decoration: underline;
+  transform: translateX(2px);
+}
+.login-link-btn:active {
+  transform: translateX(0);
 }
 
 .login-submit {
@@ -1168,10 +1184,11 @@ table.table {
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
 }
 .multi-select-trigger:hover {
-  border-color: var(--border-strong);
+  border-color: rgba(8, 145, 178, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(8, 145, 178, 0.1);
 }
 
 .multi-select-chips {
@@ -1191,12 +1208,14 @@ table.table {
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
+  animation: slideUp 0.25s ease-out;
 }
 .multi-select-chip:hover {
   background: var(--danger-soft);
-  border-color: rgba(220, 38, 38, 0.2);
+  border-color: rgba(220, 38, 38, 0.3);
   color: var(--danger);
+  transform: translateY(-1px);
 }
 
 .multi-select-empty {
